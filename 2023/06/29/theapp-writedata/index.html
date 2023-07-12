@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wilik.cn","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="文章被加密，请输入密码查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMIRun写数据">
+<meta property="og:url" content="http://wilik.cn/2023/06/29/theapp-writedata/index.html">
+<meta property="og:site_name" content="Wilik">
+<meta property="og:description" content="文章被加密，请输入密码查看。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-29T07:32:56.000Z">
+<meta property="article:modified_time" content="2023-06-30T06:47:19.860Z">
+<meta property="article:author" content="Wilik">
+<meta property="article:tag" content="RKHMI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://wilik.cn/2023/06/29/theapp-writedata/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://wilik.cn/2023/06/29/theapp-writedata/","path":"2023/06/29/theapp-writedata/","title":"HMIRun写数据"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HMIRun写数据 | Wilik</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Wilik</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">好记性不如烂博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wilik"
+      src="/images/cat.png">
+  <p class="site-author-name" itemprop="name">Wilik</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wilik.cn/2023/06/29/theapp-writedata/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/cat.png">
+      <meta itemprop="name" content="Wilik">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wilik">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HMIRun写数据 | Wilik">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HMIRun写数据
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-06-29 15:32:56" itemprop="dateCreated datePublished" datetime="2023-06-29T15:32:56+08:00">2023-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-06-30 14:47:19" itemprop="dateModified" datetime="2023-06-30T14:47:19+08:00">2023-06-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RK/" itemprop="url" rel="index"><span itemprop="name">RK</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="sorry, wrong code" data-whm="sorry, wrong hash">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a829553dd122145bc6a0f5b91b0f3c5e6ec87720e7b99e0cae0d5fb5ed104556">21f8e907b6ea59635716f91a3e5cdbab9a95808e5aaf7bb8345582c8935123b8ea7211cea66af494449593282204c4fdf9d96a32908b1a60c6f6ad1bab512c95dfab7ed5bf4758c73ae1ecf1d921d2de4fefb8fea4093d69a5b71fb86d88b78791596a1a903a3b9e5e601b1a537d0c5e5bab90b81a83d7aca12d88f779b120d3dd3b45d39bbfb4a74705fa164a4b1e4fd3a11b5f86dd590e3d8caf4bda3f9b52b13c75721ec0d8516207e730314f1eb3f952e563b2296f7a8ffee789e3eed5b547f6192131ee51bce45f46a21606ff612a22a65daf65db89c607f768b45df7ce999b83a7d409828511c3020daf2de0ab2a1a6082055fbddc6957d7942566ea4f547c4a472006232253041de937c4b3bd619ac45d5db741a3c8818a8a33845ba3b146dab1870fd29ff898546d9b5e2f49840025fcd9eb5f71cdd49eaf813f56781b0c1aac194e9455ae0bbc18e82bda1638bada82537892cb49b1b7be1b9eb6457910576577d452b367675fc3763bf3568a1db3922e7babb56aba37af2e1229f4726808193c606f53c113d542e357048cbb15c0cfe919a5f1de6d23f3b0e9cb93a404d0c65181e16d2e856b934dfc64772714ce4ee2a74d33efb001e5bec5a4c137fad82fca16a397ffbcecb7e7c93c9306184c6e3c370e08ca64fe5e955bf09e9683b850eb1ebc04efa69d9a28597cf24a0dae5d3dc4fd6a570592cf248fd35f46924105327861fe9d90b4e66eec2f661c83380d225d886c928c18339ed30f8ebe604fb0c28e733f5ac668db3c24e6d65ce4f4f3cf264f385d6a3c8d6538a75e993e199a1e94000d034c6e8ceb45dc158c49c75a49bab651042d71f1e2868b0354e89b8fcb046d6d295ad44a89132173f8c2d75cc0ec3c5d1fffbd9c17ee3180a3e07b8ddd7d9bd925a696316c8a7cdd90e651ff207e18afebde2d2083ac28b13a122349f5d4fa92d29ed93ea50f48b50e734870a8b67b603d1b5d4fa03aec8220bb07b6eb69bb0ee3a50f93fe97e3fdf5b40ab1b29224aa9b3bd354efd817ec4fb7d160810f836722dfe299dce61a5491922fe5871cea86d3f833beb81352d4234c2ac45682e58cfbfc012d470772e9d88b3c17ff26419c42fbe6f631f04ff0492e1553231327c506539a1bd2e75001d890a4e23e8e5f81058b737bdd53aea5ac91cc00989f1afd38a52c2117616c8c62bf80b107d2505e347d16eb39eda048f777656e1827784f407cc512ae0aef56a5109566443b7df0d501ca3b794a49c886cc0afd13a0e9a32be0bd862e069b27daa2cf7b839e8b806b9a34d5905010bb77ade012ed4e21b84ad030932c097b61743d042d39cbb2d691120b47a33d97362eb475cb4ddd1d90cb667db7134b42d58f276d4cd14d0e44b5bdcc585bcef774e9f7193251216a5610f6ad72578dbdf8e520768c22b79ee955e317ffb87c1147cc02b6d33511dd18e2583c269258f9eac181b3625ca84f2f263a4d6d4be4ad97615c058573aedebd08d58964f6f1f21504a6941e5717b38c9d91a6ef5b4a5fc1b6cb9102beae4799857bf3c5acaa3d6bc946c7cf1b010e10d9893130aea7bd2503c5bc86a2a711debdce664535780d5c0deba4dde9897af7b99930b06966f489d0595781be632e6aaac0b77722ade62ee3dc0b27df05fc41d7065b4be334e9150bce0994b0a688eddcb515a9654bffde845eb2decbf00bd1411b15434f37dd215f446556617a3bf28ec1f8d24b161b05cf10998e3dde93caaff02e9022514526a7e2cf9a9885c6d32dc1ae9cfb1f6807f60588edecc0be8fcd3bc79db6eff189dbd395d1799bc0987a84f87f642fb5f763bc501b0a86fb04304f870e8b4de784c1d9c50a6b9d02373aa0d968f3d4c51304a97794cc0ff1a13bbb9d377c6d5f3fcc0938accfc2df8e5ce49af00e284f7b6ea82c3beb923bf424c4362535c01fc57048c16e087eaa70b596a18c07017bed36e09ed31c750ebc9ead496dec2b8cbb5a53dbb7ace54c5be85bd8f726f34c0da77c40012b341b892df58924f4c857afce66dcccd5baa09ae9dbecbae55c22205809a9ac10c0b1b48ebe313461612e0d96383dd511b2800a972a4d70d21afccc71221ebb6d14ce9b8f46f380fa999103f5ac361770b531f329c2a8cd6f6b296104cd962ebb3d22be185e80c14cf75a902635aae74e4b4167c552642af4d585281c54892ac586d1573b3f64ef1e8ad413d8b953ac3e066da703016a0f90fe07a5c120d62c3495b603a868be52b9255cf9ffaeac7ae9087fe25eb576d0243f4740a14420c4ee2d0894eb7c8c40bbde5ac1dce8845cc67d40538f882c6598603e36966333ff8d17328fc2a7dc789387b419559b811c3af37f925ca688c2002218aa48f94c6b4ce3a7b357161e74f86c5fa2e8246b22e2b9a720b8cf4328c9ebc674937c38b9d42ee9dbb80261ca944cb4d5ad8235cd9f293a5f3ad15676d4a91bda</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码。</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/RKHMI/" rel="tag"><i class="fa fa-tag"></i> RKHMI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/06/30/github-proxy/" rel="next" title="github clone出现的异常问题">
+                  github clone出现的异常问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">鲁ICP备17047170号-3 </a>
+  </div>
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Wilik</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
